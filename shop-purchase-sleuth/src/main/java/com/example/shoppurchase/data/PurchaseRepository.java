@@ -9,4 +9,6 @@ import com.example.shoppurchase.domain.Purchase;
 public interface PurchaseRepository extends CrudRepository<Purchase, String> {
 
 	Page<Purchase> findByUserId(String userId, Pageable pageRequest);
+	
+	Page<Purchase> findByProductId(String productId, Pageable pageRequest);
 }

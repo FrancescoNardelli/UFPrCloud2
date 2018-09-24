@@ -30,6 +30,11 @@ public class PurchaseController {
 		return service.getUserPurchase(userId, purchaseId);
 	}
 	
+	@GetMapping("/api/purchases/product/{productId}")
+	public @ResponseBody Page<Purchase> listPurchasesByProduct(@PathVariable String productId, Pageable pageRequest) {
+		return service.getPurchasesByProduct(productId, pageRequest);
+	}
+	
 	@PostMapping("/api/purchases/{userId}")
 	public @ResponseBody Purchase buy(@PathVariable String userId, @RequestBody PurchaseRequest request) {
 		return service.buy(userId, request);

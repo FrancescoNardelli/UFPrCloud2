@@ -17,7 +17,7 @@ public class RecommenderController {
 	private RecommenderService service;
 	
 	@GetMapping("/api/recommendations/{productId}/{userId}")
-	public @ResponseBody Page<Product> listRecommended(Pageable pageRequest,@PathVariable String productId, @PathVariable String userId) {
+	public @ResponseBody Page<Product> listRecommended(Pageable pageRequest, @PathVariable String productId, @PathVariable String userId) {
 		return null;
 	}
 }
