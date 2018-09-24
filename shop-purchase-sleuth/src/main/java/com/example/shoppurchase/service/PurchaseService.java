@@ -23,8 +23,11 @@ public class PurchaseService {
 		return repo.findByUserId(userId, pageRequest);
 	}
 	
-	public Page<Purchase> getPurchasesByProduct(String productId, Pageable pageRequest) {
+	/*public Page<Purchase> getPurchasesByProduct(String productId, Pageable pageRequest) {
 		return repo.findByProductId(productId, pageRequest);
+	}*/
+	public Page<String> getPurchasesByProduct(String productId, Pageable pageRequest) {
+		return repo.prova(productId, pageRequest);
 	}
 	
 	public Purchase getUserPurchase(String userId, String purchaseId) {

@@ -30,8 +30,12 @@ public class PurchaseController {
 		return service.getUserPurchase(userId, purchaseId);
 	}
 	
-	@GetMapping("/api/purchases/product/{productId}")
+	/*@GetMapping("/api/purchases/users/{productId}")
 	public @ResponseBody Page<Purchase> listPurchasesByProduct(@PathVariable String productId, Pageable pageRequest) {
+		return service.getPurchasesByProduct(productId, pageRequest);
+	}*/
+	@GetMapping("/api/purchases/users/{productId}")
+	public @ResponseBody Page<String> listPurchasesByProduct(@PathVariable String productId, Pageable pageRequest) {
 		return service.getPurchasesByProduct(productId, pageRequest);
 	}
 	
