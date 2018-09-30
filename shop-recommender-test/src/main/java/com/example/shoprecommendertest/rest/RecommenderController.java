@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,7 +27,7 @@ public class RecommenderController {
 	private PurchaseService Pservice;
 	
 	@GetMapping("/api/recommendations/{productId}/{userId}")
-	public @ResponseBody String listRecommended(@PathVariable String productId,@PathVariable String userId) {
+	public @ResponseBody Page<Recommendate> listRecommended(@PathVariable String productId,@PathVariable String userId) {
 		
 		//Getting all products that can become a recommendation
 		String temp = Pservice.getBuyers(productId);
@@ -81,12 +84,15 @@ public class RecommenderController {
 			}
 		}
 		
-		//Print first 5 products (those with higher counters)
+		//Return first 5 products (those with higher counters)
 		String result = "";
 		for(int j=0; j<5; j++) {
 			result = result + reccomendationsFinal.get(j).getProductId() + " - " + reccomendationsFinal.get(j).counter + "<br>";
 		}
-		return result;
+		
+		final Page<Recommendate> page = new PageImpl<>(reccomendationsFinal);
+		
+		return page;
 	}
 	
 	@GetMapping("/test")
