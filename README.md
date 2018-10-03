@@ -9,3 +9,5 @@ MySql commands:
 > CREATE DATABASE shop;
 > CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
 > GRANT ALL PRIVILEGES ON shop.* TO 'admin'@'%';
+
+# Created By Francesco Nardelli
